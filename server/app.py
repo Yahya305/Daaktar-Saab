@@ -25,12 +25,11 @@ def process_patient_input(state):
         asked_symptoms = set(state.get('asked_symptoms', []))
         excluded_candidates = state.get('excluded_candidates', [])
         depth = state.get('depth', 0)
-        max_depth = state.get('max_depth', 3)
-        confidence_threshold = state.get('confidence_threshold', 0.7)
-
+        max_depth = 5
+        confidence_threshold = state.get('confidence_threshold')
         if depth >= max_depth:
             yield json.dumps({
-                'message': "Please consult a healthcare professional",
+                'token': "Please consult a healthcare professional.",
                 'complete': True
             }) + '\n'
             return
@@ -55,6 +54,8 @@ def process_patient_input(state):
         for candidate in zip(results['distances'][0], results['metadatas'][0], results['ids'][0]):
             distance, metadata, candidate_id = candidate
             current_confidence = 1 - distance
+            print(current_confidence, confidence_threshold, current_confidence >= confidence_threshold)
+
 
             # If confidence threshold is met, stream diagnosis and treatment
             if current_confidence >= confidence_threshold:
@@ -111,6 +112,7 @@ def process_patient_input(state):
                         'initial_prompt': initial_prompt,
                         'asked_symptoms': list(asked_symptoms),
                         'excluded_candidates': excluded_candidates,
+                        'confidence_threshold':confidence_threshold,
                         'depth': depth + 1,
                         'complete': False
                     }

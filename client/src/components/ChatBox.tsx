@@ -20,8 +20,8 @@ const Chatbot: React.FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [conversationState, setConversationState] = useState({
         is_initail_prompt: true,
-        confidence_threshold: 0.7,
-        symptom_similarity_threshold: 0.7,
+        confidence_threshold: 0.6,
+        symptom_similarity_threshold: 0.6,
         asked_symptoms: [],
         excluded_candidates: [],
         depth: 0,
@@ -97,6 +97,7 @@ const Chatbot: React.FC = () => {
                                             return prev;
                                         });
                                     }
+                                    console.log(data.state)
                                     if (data.state) {
                                         setConversationState({
                                             ...data.state,
@@ -122,7 +123,7 @@ const Chatbot: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col h-[835px] bg-gray-50 p-4 gap-2">
+        <div className="flex flex-col h-[820px] bg-gray-50 p-4 gap-2">
             <div
                 ref={chatContainerRef}
                 className="flex-1 overflow-y-auto p-4 space-y-4 bg-white shadow-lg rounded-xl border border-gray-200 relative"
