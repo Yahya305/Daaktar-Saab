@@ -33,5 +33,33 @@ RAG Architecture | Phi-3-mini-4k-instruct | ChromaDB
 ## Setting Up The Project
 ### 1. Clone repository
    ```bash
-   git clone https://github.com/yourusername/doctor-saab.git
-   cd doctor-saab/backend
+   git clone https://github.com/Yahya305/Daaktar-Saab.git 
+   ```
+
+### 2. Frontend
+   ```bash
+   cd client
+   npm i
+   npm run dev
+   ```
+
+### 2. Backend
+   ```bash
+   cd server
+   python -m venv .venv
+   cd .venv/Scripts
+   ./activate
+   cd ../..
+   pip install -r requirements.txt
+   ```
+
+### 3. LLM & DB Setup
+Replace the below path in Line 8 (setup.py) file with the desired installation path of the LLM on your local machine.
+   ```bash
+   model_path = r"E:\Personal Projects\LLM Prac\Models"
+   ```   
+Finally the last step. Execute the setup.py file. This installs the LLM on your local machine and seeds the vector database.
+  
+Execute the file app.py file 
+
+Access the localhost ```http://localhost:5173/``` and you are good to go.
