@@ -43,7 +43,7 @@ RAG Architecture | Phi-3-mini-4k-instruct | ChromaDB
    npm run dev
    ```
 
-### 2. Backend
+### 3. Backend
    ```bash
    cd server
    python -m venv .venv
@@ -53,7 +53,7 @@ RAG Architecture | Phi-3-mini-4k-instruct | ChromaDB
    pip install -r requirements.txt
    ```
 
-### 3. LLM & DB Setup
+### 4. LLM & DB Setup
 Replace the below path in Line 8 (setup.py) file with the desired installation path of the LLM on your local machine.
    ```bash
    model_path = r"E:\Personal Projects\LLM Prac\Models"
